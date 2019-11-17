@@ -17,6 +17,10 @@
 		95F9C674238136C800196AC6 /* SubscriptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C673238136C800196AC6 /* SubscriptController.swift */; };
 		95F9C6782381374B00196AC6 /* LockerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C6772381374B00196AC6 /* LockerController.swift */; };
 		95F9C67A2381381500196AC6 /* TrendingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C6792381381500196AC6 /* TrendingController.swift */; };
+		95F9C67C23814DD600196AC6 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C67B23814DD600196AC6 /* Video.swift */; };
+		95F9C67E2381517300196AC6 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C67D2381517300196AC6 /* Setting.swift */; };
+		95F9C680238151E900196AC6 /* URLInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C67F238151E900196AC6 /* URLInfo.swift */; };
+		95F9C6822381520800196AC6 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C6812381520800196AC6 /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		95F9C673238136C800196AC6 /* SubscriptController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptController.swift; sourceTree = "<group>"; };
 		95F9C6772381374B00196AC6 /* LockerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerController.swift; sourceTree = "<group>"; };
 		95F9C6792381381500196AC6 /* TrendingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingController.swift; sourceTree = "<group>"; };
+		95F9C67B23814DD600196AC6 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		95F9C67D2381517300196AC6 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		95F9C67F238151E900196AC6 /* URLInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLInfo.swift; sourceTree = "<group>"; };
+		95F9C6812381520800196AC6 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +100,8 @@
 		95733C0D2381327F001B666E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95F9C67B23814DD600196AC6 /* Video.swift */,
+				95F9C67D2381517300196AC6 /* Setting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -99,6 +109,8 @@
 		95733C0E23813283001B666E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				95F9C67F238151E900196AC6 /* URLInfo.swift */,
+				95F9C6812381520800196AC6 /* APIService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -173,13 +185,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F9C67E2381517300196AC6 /* Setting.swift in Sources */,
 				95733C0B23813238001B666E /* HomeController.swift in Sources */,
+				95F9C680238151E900196AC6 /* URLInfo.swift in Sources */,
 				95F9C674238136C800196AC6 /* SubscriptController.swift in Sources */,
 				95F9C67A2381381500196AC6 /* TrendingController.swift in Sources */,
 				95733BFB238131D1001B666E /* ViewController.swift in Sources */,
+				95F9C67C23814DD600196AC6 /* Video.swift in Sources */,
 				95F9C6722381349000196AC6 /* CustomTabBarController.swift in Sources */,
 				95F9C6782381374B00196AC6 /* LockerController.swift in Sources */,
 				95733BF7238131D1001B666E /* AppDelegate.swift in Sources */,
+				95F9C6822381520800196AC6 /* APIService.swift in Sources */,
 				95733BF9238131D1001B666E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
