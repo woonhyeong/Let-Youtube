@@ -9,23 +9,55 @@
 import UIKit
 
 class HomeController: UIViewController {
+    
+    private struct Constant {
+        static let cellId = "videoCell"
+    }
 
+    // MARK: - Variables
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.backgroundColor = .white
+        cv.register(VideoCell.self, forCellWithReuseIdentifier: Constant.cellId)
+        cv.delegate = self
+        cv.dataSource = self
+        return cv
+    }()
+    
+    var videos: [Video] = []
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.green
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func fetchVideos() {
+        ApiService.shared.fetchVideo(with: URLInfo.homeURL, completion: {
+            videos in
+            
+            self.videos = videos
+            self.collectionView.reloadData()
+        })
     }
-    */
+}
 
+extension HomeController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return videos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.cellId, for: indexPath) as? VideoCell else {
+            fatalError("Invalid cell Identifier.")
+        }
+        
+        return cell
+    }
+    
+    
 }

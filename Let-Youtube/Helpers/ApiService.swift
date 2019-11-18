@@ -8,9 +8,9 @@
 
 import UIKit
 
-class APIService: NSObject {
+class ApiService: NSObject {
     
-    static let shared = APIService()
+    static let shared = ApiService()
     
     private override init() { super.init() }
     
