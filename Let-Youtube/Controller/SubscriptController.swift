@@ -8,23 +8,14 @@
 
 import UIKit
 
-class SubscriptController: UIViewController {
+class SubscriptController: HomeController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = UIColor.blue
+    override func fetchVideos() {
+        ApiService.shared.fetchVideo(with: URLInfo.subscriptionURL, completion: {
+            videos in
+            
+            self.videos = videos
+            self.collectionView.reloadData()
+        })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

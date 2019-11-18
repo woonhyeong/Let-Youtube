@@ -33,7 +33,26 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fetchVideos()
         
+        view.addSubview(collectionView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
+        view.addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
+        
+        setupNavBarButtons()
+    }
+    
+    private func setupNavBarButtons() {
+        let searchImage = UIImage(named: "ico_search")
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(touchedSearchButton(_:)))
+        searchBarButtonItem.tintColor = .gray
+        
+        let moreImage = UIImage(named: "ico_more_switch")
+        let moreButtonItem = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(touchedMoreButton(_:)))
+        moreButtonItem.tintColor = .gray
+        
+        navigationItem.rightBarButtonItems = [moreButtonItem, searchBarButtonItem]
+        navigationController?.hidesBarsOnSwipe = true
     }
     
     func fetchVideos() {
@@ -43,6 +62,15 @@ class HomeController: UIViewController {
             self.videos = videos
             self.collectionView.reloadData()
         })
+    }
+    
+    // Mark: IBAction Methods
+    @objc func touchedSearchButton(_ sender: UIBarButtonItem) {
+        print("Search button Tapped.")
+    }
+    
+    @objc func touchedMoreButton(_ sender: UIBarButtonItem) {
+        print("More button Tapped.")
     }
 }
 
@@ -56,8 +84,17 @@ extension HomeController: UICollectionViewDelegateFlowLayout, UICollectionViewDe
             fatalError("Invalid cell Identifier.")
         }
         
+        cell.video = videos[indexPath.item]
+        
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = (self.view.frame.width - 16 - 16) * 9 / 16
+        return CGSize(width: self.view.frame.width, height: height + 16 + 88)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }

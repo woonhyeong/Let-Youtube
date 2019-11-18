@@ -8,23 +8,14 @@
 
 import UIKit
 
-class TrendingController: UIViewController {
+class TrendingController: HomeController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = UIColor.yellow
+    override func fetchVideos() {
+        ApiService.shared.fetchVideo(with: URLInfo.trendingURL, completion: {
+            videos in
+            
+            self.videos = videos
+            self.collectionView.reloadData()
+        })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

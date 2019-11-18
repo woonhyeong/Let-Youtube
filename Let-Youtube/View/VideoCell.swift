@@ -42,7 +42,7 @@ class VideoCell: BaseCell {
         let imageView = ThumbnailImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = UIColor.lightGray
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -50,7 +50,7 @@ class VideoCell: BaseCell {
     let userProfileImageView: ThumbnailImageView = {
         let imageView = ThumbnailImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
