@@ -43,15 +43,39 @@ class HomeController: UIViewController {
     }
     
     private func setupNavBarButtons() {
-        let searchImage = UIImage(named: "ico_search")
-        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(touchedSearchButton(_:)))
+        let searchImage = UIImage(named: "ico_search")?.withTintColor(UIColor.gray)
+        let searchButton = UIButton(type: .custom)
+        searchButton.setImage(searchImage, for: .normal)
+        searchButton.contentMode = .scaleAspectFit
+        searchButton.addTarget(self, action: #selector(touchedSearchButton(_:)), for: .touchDown)
+        let searchBarButtonItem = UIBarButtonItem(customView: searchButton)
         searchBarButtonItem.tintColor = .gray
         
-        let moreImage = UIImage(named: "ico_more_switch")
-        let moreButtonItem = UIBarButtonItem(image: moreImage, style: .plain, target: self, action: #selector(touchedMoreButton(_:)))
+        let moreImage = UIImage(named: "ico_more_switch")?.withTintColor(UIColor.gray)
+        let moreButton = UIButton(type: .custom)
+        moreButton.setImage(moreImage, for: .normal)
+        moreButton.contentMode = .scaleAspectFit
+        moreButton.addTarget(self, action: #selector(touchedMoreButton(_:)), for: .touchDown)
+        let moreButtonItem = UIBarButtonItem(customView: moreButton)
         moreButtonItem.tintColor = .gray
         
-        navigationItem.rightBarButtonItems = [moreButtonItem, searchBarButtonItem]
+        let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 1))
+        let spaceItem = UIBarButtonItem(customView: spaceView)
+        
+        let logoImageView = UIImageView(image: UIImage(named: "ico_logo"))
+        logoImageView.contentMode = .scaleAspectFit
+        let logoImageItem = UIBarButtonItem(customView: logoImageView)
+        
+        let logoTextView = UITextField()
+        logoTextView.text = "Woon"
+        logoTextView.font = UIFont.boldSystemFont(ofSize: 20)
+        logoTextView.isSelected = false
+        logoTextView.isUserInteractionEnabled = false
+        let logoTextItem = UIBarButtonItem(customView: logoTextView)
+        
+        navigationItem.rightBarButtonItems = [moreButtonItem, spaceItem, searchBarButtonItem]
+        navigationItem.leftBarButtonItems = [logoImageItem, logoTextItem]
+        
         navigationController?.hidesBarsOnSwipe = true
     }
     
