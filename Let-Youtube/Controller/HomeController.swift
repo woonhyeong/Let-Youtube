@@ -40,10 +40,35 @@ class HomeController: UIViewController {
         view.addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         
         setupNavBarButtons()
+        navigationController?.hidesBarsOnSwipe = true
     }
     
+    // MARK: IBAction Methods
+    @objc func touchedSearchButton(_ sender: UIBarButtonItem) {
+        print("Search button Tapped.")
+    }
+    
+    @objc func touchedMoreButton(_ sender: UIBarButtonItem) {
+        print("More button Tapped.")
+        
+        let accountVC = UINavigationController(rootViewController: AccountController())
+        present(accountVC, animated: true, completion: nil)
+    }
+    
+    // MARK: Custom Methods
+    func fetchVideos() {
+        ApiService.shared.fetchVideo(with: URLInfo.homeURL, completion: {
+            videos in
+            
+            self.videos = videos
+            self.collectionView.reloadData()
+        })
+    }
+
+    
+    // MARK: - UI
     private func setupNavBarButtons() {
-        let searchImage = UIImage(named: "ico_search")?.withTintColor(UIColor.gray)
+        let searchImage = UIImage(named: "ico_search")?.withTintColor(UIColor.darkGray)
         let searchButton = UIButton(type: .custom)
         searchButton.setImage(searchImage, for: .normal)
         searchButton.contentMode = .scaleAspectFit
@@ -51,7 +76,7 @@ class HomeController: UIViewController {
         let searchBarButtonItem = UIBarButtonItem(customView: searchButton)
         searchBarButtonItem.tintColor = .gray
         
-        let moreImage = UIImage(named: "ico_more_switch")?.withTintColor(UIColor.gray)
+        let moreImage = UIImage(named: "ico_more_switch")?.withTintColor(UIColor.darkGray)
         let moreButton = UIButton(type: .custom)
         moreButton.setImage(moreImage, for: .normal)
         moreButton.contentMode = .scaleAspectFit
@@ -59,7 +84,7 @@ class HomeController: UIViewController {
         let moreButtonItem = UIBarButtonItem(customView: moreButton)
         moreButtonItem.tintColor = .gray
         
-        let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: 1))
+        let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 1))
         let spaceItem = UIBarButtonItem(customView: spaceView)
         
         let logoImageView = UIImageView(image: UIImage(named: "ico_logo"))
@@ -75,26 +100,6 @@ class HomeController: UIViewController {
         
         navigationItem.rightBarButtonItems = [moreButtonItem, spaceItem, searchBarButtonItem]
         navigationItem.leftBarButtonItems = [logoImageItem, logoTextItem]
-        
-        navigationController?.hidesBarsOnSwipe = true
-    }
-    
-    func fetchVideos() {
-        ApiService.shared.fetchVideo(with: URLInfo.homeURL, completion: {
-            videos in
-            
-            self.videos = videos
-            self.collectionView.reloadData()
-        })
-    }
-    
-    // Mark: IBAction Methods
-    @objc func touchedSearchButton(_ sender: UIBarButtonItem) {
-        print("Search button Tapped.")
-    }
-    
-    @objc func touchedMoreButton(_ sender: UIBarButtonItem) {
-        print("More button Tapped.")
     }
 }
 

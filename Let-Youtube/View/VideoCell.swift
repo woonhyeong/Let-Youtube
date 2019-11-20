@@ -27,12 +27,12 @@ class VideoCell: BaseCell {
             }
             
             if let title = video?.title {
-                let fontHeight = title.heightWithConstrainedWidth(width: frame.width - 32 - 44 - 8, font: UIFont.systemFont(ofSize: 16))
+                let fontHeight = title.heightWithConstrainedWidth(width: frame.width - 78, font: UIFont.systemFont(ofSize: 14))
                 
                 if fontHeight > 20 {
-                    titleLabelHeightConstraint.constant = 44
+                    titleLabelHeightConstraint.constant = 36
                 } else {
-                    titleLabelHeightConstraint.constant = 20
+                    titleLabelHeightConstraint.constant = 18
                 }
             }
         }
@@ -61,6 +61,8 @@ class VideoCell: BaseCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
+        label.textColor = UIColor.rgb(red: 30, green: 30, blue: 30, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.lineBreakMode = .byWordWrapping
         return label
     }()
@@ -69,7 +71,7 @@ class VideoCell: BaseCell {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
-        textView.textColor = .lightGray
+        textView.textColor = .gray
         return textView
     }()
     
@@ -80,28 +82,42 @@ class VideoCell: BaseCell {
         return view
     }()
     
-    lazy var titleLabelHeightConstraint: NSLayoutConstraint = videoTitleLabel.heightAnchor.constraint(equalToConstant: 20)
+    let settingLauncher: UIButton = {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        button.setImage(UIImage(named: "ico_more")?.withTintColor(.lightGray), for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var titleLabelHeightConstraint: NSLayoutConstraint = videoTitleLabel.heightAnchor.constraint(equalToConstant: 18)
     
     override func setupViews() {
         self.addSubview(thumbnailImageView)
         self.addSubview(userProfileImageView)
         self.addSubview(videoTitleLabel)
+        self.addSubview(settingLauncher)
         self.addSubview(videoInfoLabel)
         self.addSubview(separatorView)
         
-        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbnailImageView)
-        addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: userProfileImageView)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: thumbnailImageView)
+        addConstraintsWithFormat(format: "H:|-10-[v0(38)]", views: userProfileImageView)
         
-        addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-36-[v2(1)]|", views: thumbnailImageView, userProfileImageView, separatorView)
+        addConstraintsWithFormat(format: "V:|-8-[v0]-10-[v1(38)]-30-[v2(1)]|", views: thumbnailImageView, userProfileImageView, separatorView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: separatorView)
 
         NSLayoutConstraint.activate([
-            videoTitleLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8),
-            videoTitleLabel.leftAnchor.constraint(equalTo: userProfileImageView.rightAnchor, constant: 8),
-            videoTitleLabel.rightAnchor.constraint(equalTo: thumbnailImageView.rightAnchor),
+            videoTitleLabel.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 10),
+            videoTitleLabel.leftAnchor.constraint(equalTo: userProfileImageView.rightAnchor, constant: 10),
+            videoTitleLabel.rightAnchor.constraint(equalTo: settingLauncher.leftAnchor, constant: -4),
             titleLabelHeightConstraint,
-            videoInfoLabel.topAnchor.constraint(equalTo: videoTitleLabel.bottomAnchor, constant: 4),
-            videoInfoLabel.leftAnchor.constraint(equalTo: userProfileImageView.rightAnchor, constant: 8),
+            settingLauncher.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 14),
+            settingLauncher.rightAnchor.constraint(equalTo: thumbnailImageView.rightAnchor, constant: -4),
+            settingLauncher.heightAnchor.constraint(equalToConstant: 14),
+            settingLauncher.widthAnchor.constraint(equalToConstant: 14),
+            videoInfoLabel.topAnchor.constraint(equalTo: videoTitleLabel.bottomAnchor, constant: 3),
+            videoInfoLabel.leftAnchor.constraint(equalTo: userProfileImageView.rightAnchor, constant: 10),
             videoInfoLabel.rightAnchor.constraint(equalTo: thumbnailImageView.rightAnchor),
             videoInfoLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
