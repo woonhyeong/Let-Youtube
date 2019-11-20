@@ -72,6 +72,7 @@ class VideoCell: BaseCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         textView.textColor = .gray
+        textView.isUserInteractionEnabled = false
         return textView
     }()
     
@@ -82,8 +83,9 @@ class VideoCell: BaseCell {
         return view
     }()
     
-    let settingLauncher: UIButton = {
+    lazy var settingLauncher: UIButton = {
         let button = UIButton(type: .custom)
+        button.addTarget(self, action: #selector(settingButtonTouched(_:)), for: .touchUpInside)
         button.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         button.setImage(UIImage(named: "ico_more")?.withTintColor(.lightGray), for: .normal)
         button.contentMode = .scaleAspectFit
@@ -133,6 +135,10 @@ class VideoCell: BaseCell {
         if let thumbnailImageURL = video?.thumbnailImageName {
             thumbnailImageView.loadImageWith(urlString: thumbnailImageURL)
         }
+    }
+    
+    @objc func settingButtonTouched(_ sender: UIButton) {
+        ApiService.shared.settingsLauncher.showSettingView()
     }
 }
 

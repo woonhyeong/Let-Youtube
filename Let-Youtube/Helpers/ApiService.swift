@@ -12,6 +12,11 @@ class ApiService: NSObject {
     
     static let shared = ApiService()
     
+    let settingsLauncher: SettingLauncher = {
+        let launcher = SettingLauncher()
+        return launcher
+    }()
+    
     private override init() { super.init() }
     
     func fetchVideo(with URLString: String, completion: @escaping ([Video]) -> ()) {
