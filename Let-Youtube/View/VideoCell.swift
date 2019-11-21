@@ -13,6 +13,7 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet {
             videoTitleLabel.text = video?.title
+            videoTitleLabel.backgroundColor = UIColor.white
             
             setupThumbnailImage()
             setupProfileImage()
@@ -24,6 +25,7 @@ class VideoCell: BaseCell {
                 
                 let subtitleText = "\(channelName) * \(fomatter.string(from: number)!) * 2years"
                 videoInfoLabel.text = subtitleText
+                videoInfoLabel.backgroundColor = UIColor.white
             }
             
             if let title = video?.title {
@@ -41,7 +43,7 @@ class VideoCell: BaseCell {
     let thumbnailImageView: ThumbnailImageView = {
         let imageView = ThumbnailImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = UIColor.lightGray
+        imageView.backgroundColor = UIColor.rgb(red: 200, green: 200, blue: 200, alpha: 1)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -50,6 +52,7 @@ class VideoCell: BaseCell {
     let userProfileImageView: ThumbnailImageView = {
         let imageView = ThumbnailImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = UIColor.rgb(red: 200, green: 200, blue: 200, alpha: 1)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 22
@@ -60,6 +63,7 @@ class VideoCell: BaseCell {
     let videoTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = UIColor.rgb(red: 200, green: 200, blue: 200, alpha: 1)
         label.numberOfLines = 2
         label.textColor = UIColor.rgb(red: 30, green: 30, blue: 30, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 15)
@@ -70,6 +74,7 @@ class VideoCell: BaseCell {
     let videoInfoLabel: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.backgroundColor = UIColor.rgb(red: 200, green: 200, blue: 200, alpha: 1)
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
         textView.textColor = .gray
         textView.isUserInteractionEnabled = false

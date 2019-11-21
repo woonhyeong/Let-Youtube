@@ -20,6 +20,7 @@
 		95A427B023815EE800186EEA /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A427AF23815EE800186EEA /* VideoCell.swift */; };
 		95A427B223815EEE00186EEA /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A427B123815EEE00186EEA /* MenuCell.swift */; };
 		95A427B423815EF900186EEA /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A427B323815EF900186EEA /* SettingCell.swift */; };
+		95B0786E2386595D00EBBBDE /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0786D2386595D00EBBBDE /* Document.swift */; };
 		95F9C6722381349000196AC6 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C6712381349000196AC6 /* CustomTabBarController.swift */; };
 		95F9C674238136C800196AC6 /* SubscriptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C673238136C800196AC6 /* SubscriptController.swift */; };
 		95F9C6782381374B00196AC6 /* LockerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C6772381374B00196AC6 /* LockerController.swift */; };
@@ -46,6 +47,7 @@
 		95A427AF23815EE800186EEA /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		95A427B123815EEE00186EEA /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		95A427B323815EF900186EEA /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		95B0786D2386595D00EBBBDE /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		95F9C6712381349000196AC6 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		95F9C673238136C800196AC6 /* SubscriptController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptController.swift; sourceTree = "<group>"; };
 		95F9C6772381374B00196AC6 /* LockerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				95F9C67F238151E900196AC6 /* URLInfo.swift */,
 				95F9C6812381520800196AC6 /* ApiService.swift */,
 				95A427AC2381572A00186EEA /* Extensions.swift */,
+				95B0786D2386595D00EBBBDE /* Document.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				958028172382AD79000B9C9B /* ThumbnailImageView.swift in Sources */,
 				95A427B023815EE800186EEA /* VideoCell.swift in Sources */,
 				95733C0B23813238001B666E /* HomeController.swift in Sources */,
+				95B0786E2386595D00EBBBDE /* Document.swift in Sources */,
 				95F9C680238151E900196AC6 /* URLInfo.swift in Sources */,
 				95F9C674238136C800196AC6 /* SubscriptController.swift in Sources */,
 				95F9C67A2381381500196AC6 /* TrendingController.swift in Sources */,

@@ -52,6 +52,7 @@ class HomeController: UIViewController {
         print("More button Tapped.")
         
         let accountVC = UINavigationController(rootViewController: AccountController())
+        accountVC.modalPresentationStyle = .fullScreen
         present(accountVC, animated: true, completion: nil)
     }
     

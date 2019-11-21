@@ -13,18 +13,25 @@ class AccountController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = UIColor.white
         setupNavigationBar()
     }
     
     private func setupNavigationBar() {
-        let cancelImage = UIImage(named: "ico_more_cancel")?.withTintColor(UIColor.darkGray)
-        let cancelBarButton = UIBarButtonItem(image: cancelImage, style: .plain, target: self, action: #selector(cancelButtonTouched(_:)))
-        cancelBarButton.tintColor = UIColor.darkGray
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        
+        let cancelImage = UIImage(named: "ico_more_cancel")?.withRenderingMode(.alwaysOriginal)
+        let cancelButton = UIButton(type: .custom)
+        cancelButton.setImage(cancelImage, for: .normal)
+        cancelButton.addTarget(self, action: #selector(cancelButtonTouched(_:)), for: .touchUpInside)
+        cancelButton.contentMode = .scaleAspectFit
+        let cancelBarButton = UIBarButtonItem(customView: cancelButton)
+        
         navigationItem.leftBarButtonItems = [cancelBarButton]
     }
     
     @objc func cancelButtonTouched(_ sender: UIBarButtonItem) {
         print("Cancel Button Touched.")
+        dismiss(animated: true, completion: nil)
     }
 }
