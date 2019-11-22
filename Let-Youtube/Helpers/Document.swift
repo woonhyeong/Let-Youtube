@@ -20,6 +20,7 @@
  2. SceneDelegate
     iOS 13 업데이트 이후로 AppDelegate와 SceneDelegate로 분리됨과 동시에 life cycle이 변경되었다.
     이는 Apple의 설명 동영상을 보는것이 더 좋다.
+    https://developer.apple.com/videos/play/wwdc2019/258/
  
  3. UIApplication.shared.window
     iOS 13 이후 저 형태로 사용할 수 없다. Scene이 추가됨에 따라,

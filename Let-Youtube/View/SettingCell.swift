@@ -46,9 +46,9 @@ class SettingCell: BaseCell {
         addSubview(nameLabel)
         addSubview(iconImageView)
         
-        addConstraintsWithFormat(format: "H:|-8-[v0(30)]-8-[v1]-8-|", views: iconImageView, nameLabel)
+        addConstraintsWithFormat(format: "H:|-15-[v0(20)]-15-[v1]-8-|", views: iconImageView, nameLabel)
         addConstraintsWithFormat(format: "V:|[v0]|", views: nameLabel)
-        addConstraintsWithFormat(format: "V:[v0(30)]", views: iconImageView)
+        addConstraintsWithFormat(format: "V:[v0(20)]", views: iconImageView)
         NSLayoutConstraint.activate([
             iconImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])

@@ -1,30 +1,24 @@
 //
-//  Setting.swift
+//  UserSetting.swift
 //  Let-Youtube
 //
-//  Created by 이운형 on 2019/11/17.
+//  Created by 이운형 on 2019/11/22.
 //  Copyright © 2019 201302458. All rights reserved.
 //
 
 import UIKit
 
-class Setting: NSObject {
-    let name: SettingMode
+class AccountSetting: NSObject {
+    let name: AccountSettingMode
     let imageName: String
     
-    init(name: SettingMode, imageName: String) {
+    init(name: AccountSettingMode, imageName: String) {
         self.name = name
         self.imageName = imageName
     }
 }
 
-enum SettingMode: String {
-    case Settings = "Settings"
-    case TermAndPrivacy = "Terms & privacy plicy"
-    case SendFeedback = "Send Feedback"
-    case Help = "Help"
-    case SwitchAccount = "Switch Account"
-    case Cancel = "Cancel"
+enum AccountSettingMode: String {
     case myChannel = "내 채널"
     case watchingTime = "시청 시간"
     case premiumEnroll = "YouTube Premium 가입"

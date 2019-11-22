@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		954B451823856C0900FC143E /* SettingLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B451723856C0900FC143E /* SettingLauncher.swift */; };
+		9568A9892387FECD008111C1 /* AccountSettingLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9568A9882387FECD008111C1 /* AccountSettingLauncher.swift */; };
+		9568A98B23880138008111C1 /* AccountSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9568A98A23880138008111C1 /* AccountSetting.swift */; };
 		95733BF7238131D1001B666E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95733BF6238131D1001B666E /* AppDelegate.swift */; };
 		95733BF9238131D1001B666E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95733BF8238131D1001B666E /* SceneDelegate.swift */; };
 		95733BFB238131D1001B666E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95733BFA238131D1001B666E /* ViewController.swift */; };
@@ -33,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		954B451723856C0900FC143E /* SettingLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLauncher.swift; sourceTree = "<group>"; };
+		9568A9882387FECD008111C1 /* AccountSettingLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingLauncher.swift; sourceTree = "<group>"; };
+		9568A98A23880138008111C1 /* AccountSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSetting.swift; sourceTree = "<group>"; };
 		95733BF3238131D1001B666E /* Let-Youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Let-Youtube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95733BF6238131D1001B666E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95733BF8238131D1001B666E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +115,6 @@
 				95F9C6772381374B00196AC6 /* LockerController.swift */,
 				95F9C6712381349000196AC6 /* CustomTabBarController.swift */,
 				958DC4A423841AD500EADD88 /* AccountController.swift */,
-				954B451723856C0900FC143E /* SettingLauncher.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -121,6 +124,7 @@
 			children = (
 				95F9C67B23814DD600196AC6 /* Video.swift */,
 				95F9C67D2381517300196AC6 /* Setting.swift */,
+				9568A98A23880138008111C1 /* AccountSetting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +147,8 @@
 				95A427B123815EEE00186EEA /* MenuCell.swift */,
 				95A427B323815EF900186EEA /* SettingCell.swift */,
 				958028162382AD79000B9C9B /* ThumbnailImageView.swift */,
+				954B451723856C0900FC143E /* SettingLauncher.swift */,
+				9568A9882387FECD008111C1 /* AccountSettingLauncher.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,11 +234,13 @@
 				95733BFB238131D1001B666E /* ViewController.swift in Sources */,
 				95F9C67C23814DD600196AC6 /* Video.swift in Sources */,
 				95F9C6722381349000196AC6 /* CustomTabBarController.swift in Sources */,
+				9568A9892387FECD008111C1 /* AccountSettingLauncher.swift in Sources */,
 				95A427AD2381572A00186EEA /* Extensions.swift in Sources */,
 				954B451823856C0900FC143E /* SettingLauncher.swift in Sources */,
 				95A427B423815EF900186EEA /* SettingCell.swift in Sources */,
 				95F9C6782381374B00196AC6 /* LockerController.swift in Sources */,
 				95A427B223815EEE00186EEA /* MenuCell.swift in Sources */,
+				9568A98B23880138008111C1 /* AccountSetting.swift in Sources */,
 				95733BF7238131D1001B666E /* AppDelegate.swift in Sources */,
 				958DC4A523841AD500EADD88 /* AccountController.swift in Sources */,
 				95F9C6822381520800196AC6 /* ApiService.swift in Sources */,

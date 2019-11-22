@@ -56,10 +56,9 @@ class SettingLauncher: NSObject, UICollectionViewDelegate, UICollectionViewDataS
         blackView.frame = window.frame
         blackView.alpha = 0
         collectionView.backgroundColor = UIColor.white
-        self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: Constant.cvHeight)
+        collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: Constant.cvHeight)
         
         let cY = window.frame.height - Constant.cvHeight
-        collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: Constant.cvHeight)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.alpha = 1.0
