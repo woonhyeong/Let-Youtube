@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		954B451823856C0900FC143E /* SettingLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B451723856C0900FC143E /* SettingLauncher.swift */; };
-		9568A9892387FECD008111C1 /* AccountSettingLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9568A9882387FECD008111C1 /* AccountSettingLauncher.swift */; };
 		9568A98B23880138008111C1 /* AccountSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9568A98A23880138008111C1 /* AccountSetting.swift */; };
 		95733BF7238131D1001B666E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95733BF6238131D1001B666E /* AppDelegate.swift */; };
 		95733BF9238131D1001B666E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95733BF8238131D1001B666E /* SceneDelegate.swift */; };
@@ -20,9 +19,9 @@
 		958DC4A523841AD500EADD88 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DC4A423841AD500EADD88 /* AccountController.swift */; };
 		95A427AD2381572A00186EEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A427AC2381572A00186EEA /* Extensions.swift */; };
 		95A427B023815EE800186EEA /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A427AF23815EE800186EEA /* VideoCell.swift */; };
-		95A427B223815EEE00186EEA /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A427B123815EEE00186EEA /* MenuCell.swift */; };
 		95A427B423815EF900186EEA /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A427B323815EF900186EEA /* SettingCell.swift */; };
 		95B0786E2386595D00EBBBDE /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0786D2386595D00EBBBDE /* Document.swift */; };
+		95D377A0238C061800E01C85 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3779F238C061800E01C85 /* UserCell.swift */; };
 		95F9C6722381349000196AC6 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C6712381349000196AC6 /* CustomTabBarController.swift */; };
 		95F9C674238136C800196AC6 /* SubscriptController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C673238136C800196AC6 /* SubscriptController.swift */; };
 		95F9C6782381374B00196AC6 /* LockerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9C6772381374B00196AC6 /* LockerController.swift */; };
@@ -35,7 +34,6 @@
 
 /* Begin PBXFileReference section */
 		954B451723856C0900FC143E /* SettingLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLauncher.swift; sourceTree = "<group>"; };
-		9568A9882387FECD008111C1 /* AccountSettingLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingLauncher.swift; sourceTree = "<group>"; };
 		9568A98A23880138008111C1 /* AccountSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSetting.swift; sourceTree = "<group>"; };
 		95733BF3238131D1001B666E /* Let-Youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Let-Youtube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95733BF6238131D1001B666E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,9 +47,9 @@
 		958DC4A423841AD500EADD88 /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		95A427AC2381572A00186EEA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		95A427AF23815EE800186EEA /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
-		95A427B123815EEE00186EEA /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		95A427B323815EF900186EEA /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		95B0786D2386595D00EBBBDE /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		95D3779F238C061800E01C85 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		95F9C6712381349000196AC6 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		95F9C673238136C800196AC6 /* SubscriptController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptController.swift; sourceTree = "<group>"; };
 		95F9C6772381374B00196AC6 /* LockerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockerController.swift; sourceTree = "<group>"; };
@@ -144,11 +142,10 @@
 			isa = PBXGroup;
 			children = (
 				95A427AF23815EE800186EEA /* VideoCell.swift */,
-				95A427B123815EEE00186EEA /* MenuCell.swift */,
 				95A427B323815EF900186EEA /* SettingCell.swift */,
+				95D3779F238C061800E01C85 /* UserCell.swift */,
 				958028162382AD79000B9C9B /* ThumbnailImageView.swift */,
 				954B451723856C0900FC143E /* SettingLauncher.swift */,
-				9568A9882387FECD008111C1 /* AccountSettingLauncher.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,14 +231,13 @@
 				95733BFB238131D1001B666E /* ViewController.swift in Sources */,
 				95F9C67C23814DD600196AC6 /* Video.swift in Sources */,
 				95F9C6722381349000196AC6 /* CustomTabBarController.swift in Sources */,
-				9568A9892387FECD008111C1 /* AccountSettingLauncher.swift in Sources */,
 				95A427AD2381572A00186EEA /* Extensions.swift in Sources */,
 				954B451823856C0900FC143E /* SettingLauncher.swift in Sources */,
 				95A427B423815EF900186EEA /* SettingCell.swift in Sources */,
 				95F9C6782381374B00196AC6 /* LockerController.swift in Sources */,
-				95A427B223815EEE00186EEA /* MenuCell.swift in Sources */,
 				9568A98B23880138008111C1 /* AccountSetting.swift in Sources */,
 				95733BF7238131D1001B666E /* AppDelegate.swift in Sources */,
+				95D377A0238C061800E01C85 /* UserCell.swift in Sources */,
 				958DC4A523841AD500EADD88 /* AccountController.swift in Sources */,
 				95F9C6822381520800196AC6 /* ApiService.swift in Sources */,
 				95733BF9238131D1001B666E /* SceneDelegate.swift in Sources */,

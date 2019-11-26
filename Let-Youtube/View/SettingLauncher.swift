@@ -11,15 +11,18 @@ import UIKit
 class SettingLauncher: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private struct Constant {
         static let cellIdentifier = "SettingLauncherCell"
-        static let cellHeight:CGFloat = 55
-        static let cvHeight:CGFloat = 55*6
+        static let headerIdentifier = "section_header"
+        static let cellHeight:CGFloat = 50
+        static let cvHeight:CGFloat = 50*6
     }
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = UIColor.darkGray
         cv.isScrollEnabled = false
         cv.register(SettingCell.self, forCellWithReuseIdentifier: Constant.cellIdentifier)
+        cv.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.headerIdentifier)
         cv.dataSource = self
         cv.delegate = self
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -81,16 +84,31 @@ class SettingLauncher: NSObject, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     // MARK: - UICollectionViewDelegate/DataSource
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return settings.count
+        switch section {
+        case 0:
+            return settings.count - 1
+        case 1:
+            return 1
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.cellIdentifier, for: indexPath) as? SettingCell else {
             fatalError("\(Constant.cellIdentifier) is invalid cell identifier.")
         }
-    
-        cell.setting = settings[indexPath.item]
+        
+        if indexPath.section == 0 {
+            cell.setting = settings[indexPath.item]
+        } else {
+            cell.setting = settings[settings.count - 1]
+        }
         
         return cell
     }
@@ -113,14 +131,29 @@ class SettingLauncher: NSObject, UICollectionViewDelegate, UICollectionViewDataS
         })
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.headerIdentifier, for: indexPath)
+        headerView.backgroundColor = UIColor.rgb(red: 210, green: 210, blue: 210, alpha: 1)
+        
+        return headerView
+    }
+    
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         return CGSize(width: collectionView.frame.width, height: Constant.cellHeight)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: 0, height: 0)
+        }
+        return CGSize(width: collectionView.frame.width, height: 1)
     }
 }
 

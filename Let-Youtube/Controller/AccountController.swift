@@ -9,29 +9,49 @@
 import UIKit
 
 class AccountController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    struct Constant {
-        static let accountCell = "account_cell"
-        static let menuCell = "menu_cell"
+    private struct Constant {
+        static let settingCellId = "setting_cell"
+        static let userCellId = "user_cell"
+        static let headerIdentifier = "section_header"
+        static let userCellHeight:CGFloat = 75
+        static let cellHeight:CGFloat = 50
+        static let cvHeight:CGFloat = 50*8
     }
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.delaysContentTouches = false
+        cv.bounces = true
+        cv.alwaysBounceVertical = true
         cv.backgroundColor = UIColor.white
+        cv.register(SettingCell.self, forCellWithReuseIdentifier: Constant.settingCellId)
+        cv.register(UserCell.self, forCellWithReuseIdentifier: Constant.userCellId)
+        cv.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.headerIdentifier)
         cv.delegate = self
         cv.dataSource = self
-        cv.register(AccountSettingLauncher.self, forCellWithReuseIdentifier: Constant.accountCell)
-        cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
+
+    var settings: [Setting] = {
+        return [Setting(name: .myChannel, imageName: "ico_more_setting"),
+                Setting(name: .watchingTime, imageName: "ico_more_privacy"),
+                Setting(name: .premiumEnroll, imageName: "ico_more_feedback"),
+                Setting(name: .payMembership, imageName: "ico_more_help"),
+                Setting(name: .convertAccount, imageName: "ico_more_switch"),
+                Setting(name: .useSecretMode, imageName: "ico_more_cancel"),
+                Setting(name: .userSetting, imageName: "ico_more_setting"),
+                Setting(name: .userRequest, imageName: "ico_more_help")]
+    }()
+
     
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.white
         setupNavigationBar()
-        
         setupCollectionView()
     }
     
@@ -61,38 +81,92 @@ class AccountController: UIViewController, UICollectionViewDelegate, UICollectio
     
     private func setupCollectionView() {
         view.addSubview(collectionView)
-        
-        let guide = view.safeAreaLayoutGuide
-        
-        NSLayoutConstraint.activate([
-            collectionView.leftAnchor.constraint(equalTo: guide.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: guide.rightAnchor),
-            collectionView.topAnchor.constraint(equalTo: guide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
-        ])
+    
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
+        view.addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
+//        let guide = view.safeAreaLayoutGuide
+//
+//        NSLayoutConstraint.activate([
+//            collectionView.leftAnchor.constraint(equalTo: guide.leftAnchor),
+//            collectionView.rightAnchor.constraint(equalTo: guide.rightAnchor),
+//            collectionView.topAnchor.constraint(equalTo: guide.topAnchor),
+//            collectionView.bottomAnchor.constraint(equalTo: guide.bottomAnchor)
+//        ])
     }
     
     // MARK: IBAction Methods
     @objc func cancelButtonTouched(_ sender: UIBarButtonItem) {
-        print("Cancel Button Touched.")
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - CollectionView Metohds
+    // MARK: - CollectionView Methods
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constant.headerIdentifier, for: indexPath)
+        headerView.backgroundColor = UIColor.rgb(red: 210, green: 210, blue: 210, alpha: 1)
+        
+        return headerView
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return settings.count - 2
+        case 2:
+            return 2
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.accountCell, for: indexPath) as! AccountSettingLauncher
+        if indexPath.section == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.userCellId, for: indexPath) as? UserCell else {
+                fatalError("\(Constant.settingCellId) is invalid identifier.")
+            }
+            return cell
+        }
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.settingCellId, for: indexPath) as? SettingCell else {
+            fatalError("\(Constant.settingCellId) is invalid identifier.")
+        }
+        
+        if indexPath.section == 1 {
+            cell.setting = settings[indexPath.item]
+        } else if indexPath.section == 2 {
+            cell.setting = settings[settings.count - 2 + indexPath.item]
+        }
+        
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 330)
+        
+        switch indexPath.section {
+        case 0:
+            return CGSize(width: collectionView.frame.width, height: Constant.userCellHeight)
+        default:
+            return CGSize(width: collectionView.frame.width, height: Constant.cellHeight)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        switch section {
+        case 0:
+            return CGSize(width: collectionView.frame.width, height: 0)
+        default:
+            return CGSize(width: collectionView.frame.width, height: 1)
+        }
+    }
+
 }

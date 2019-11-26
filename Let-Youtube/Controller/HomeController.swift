@@ -45,12 +45,10 @@ class HomeController: UIViewController {
     
     // MARK: IBAction Methods
     @objc func touchedSearchButton(_ sender: UIBarButtonItem) {
-        print("Search button Tapped.")
+        
     }
     
     @objc func touchedMoreButton(_ sender: UIBarButtonItem) {
-        print("More button Tapped.")
-        
         let accountVC = UINavigationController(rootViewController: AccountController())
         accountVC.modalPresentationStyle = .fullScreen
         present(accountVC, animated: true, completion: nil)
@@ -69,6 +67,17 @@ class HomeController: UIViewController {
     
     // MARK: - UI
     private func setupNavBarButtons() {
+        let logoImageView = UIImageView(image: UIImage(named: "ico_logo"))
+        logoImageView.contentMode = .scaleAspectFit
+        let logoImageItem = UIBarButtonItem(customView: logoImageView)
+        
+        let logoTextView = UITextField()
+        logoTextView.text = "Woon"
+        logoTextView.font = UIFont.boldSystemFont(ofSize: 20)
+        logoTextView.isSelected = false
+        logoTextView.isUserInteractionEnabled = false
+        let logoTextItem = UIBarButtonItem(customView: logoTextView)
+        
         let searchImage = UIImage(named: "ico_search")?.withTintColor(UIColor.darkGray)
         let searchButton = UIButton(type: .custom)
         searchButton.setImage(searchImage, for: .normal)
@@ -87,17 +96,6 @@ class HomeController: UIViewController {
         
         let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 1))
         let spaceItem = UIBarButtonItem(customView: spaceView)
-        
-        let logoImageView = UIImageView(image: UIImage(named: "ico_logo"))
-        logoImageView.contentMode = .scaleAspectFit
-        let logoImageItem = UIBarButtonItem(customView: logoImageView)
-        
-        let logoTextView = UITextField()
-        logoTextView.text = "Woon"
-        logoTextView.font = UIFont.boldSystemFont(ofSize: 20)
-        logoTextView.isSelected = false
-        logoTextView.isUserInteractionEnabled = false
-        let logoTextItem = UIBarButtonItem(customView: logoTextView)
         
         navigationItem.rightBarButtonItems = [moreButtonItem, spaceItem, searchBarButtonItem]
         navigationItem.leftBarButtonItems = [logoImageItem, logoTextItem]

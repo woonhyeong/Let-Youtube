@@ -31,4 +31,6 @@ enum SettingMode: String {
     case payMembership = "유료 멤버쉽"
     case convertAccount = "계정 전환"
     case useSecretMode = "시크릿 모드 사용"
+    case userSetting = "설정"
+    case userRequest = "고객센터"
 }
